@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #F5F3EF;
+  --color-surface: #FFFFFF;
+  --color-surface-warm: #FAF9F6;
+  --color-border: #E8E5DF;
+  --color-border-light: #F0EDE8;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #6B6560;
+  --color-text-muted: #A09A93;
+  --color-accent: #FF6B35;
+  --color-accent-hover: #E55A28;
+  --color-green: #22A06B;
+  --color-yellow: #CF9F02;
+  --color-red: #E34935;
+  --color-blue: #388BFF;
+  --color-purple: #8B5CF6;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 45s linear infinite;
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Blink animation for live dot */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-blink {
+  animation: blink 2s ease-in-out infinite;
+}
